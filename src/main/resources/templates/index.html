@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Persons</title>
+
+    <style rel="stylesheet">
+    ul {
+        padding: 0;
+        margin: 0;
+        /*background: #767676;*/
+        text-align: center;
+        display: block;
+        font-size: 0;
+    }
+
+    li {
+        background: #ccc;
+        width: 200px;
+        padding: 10px;
+        margin: 0 20px;
+        font-size: 16px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    </style>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+</head>
+<body>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+
+<div class="container">
+    <!--<div class="add">-->
+        <!--<form action="/api/people" method="post">-->
+            <!--First name: <input type="text" name="firstName"/><br />-->
+            <!--Last name: <input type="text" name="lastName"/><br />-->
+            <!--<input type="submit" value="Submit"/>-->
+        <!--</form>-->
+    <!--</div>-->
+    <div th:if="${not #lists.isEmpty(persons)}">
+        <ul th:each="person: ${persons}">
+            <li th:text="${person.firstName} + ' ' + ${person.lastName}">
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+</html>
