@@ -24,7 +24,7 @@ public class MultiHttpSecurityConfig {
 	@Order(1)
 	public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
 		protected void configure(HttpSecurity http) throws Exception {
-			http
+			http.csrf().disable()
 				.antMatcher("/api/**")
 				.authorizeRequests()
 					.anyRequest().hasRole("ADMIN")
